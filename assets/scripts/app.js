@@ -24,41 +24,50 @@ const writeToLog = (operationId, previousResult, operationNum, newRes) => {
 };
 
 const calculateResult = (calculationType) => {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  let mathOperator;
-  if (calculationType === 'ADD') {
-    currentResult += enteredNumber;
-    mathOperator = '+';
-  } else if (calculationType === 'SUBTRACT') {
-    currentResult -= enteredNumber;
-    mathOperator = '-';
-  } else if (calculationType === 'DIVIDE') {
-    currentResult /= enteredNumber;
-    mathOperator = '/';
-  } else if (calculationType === 'MULTIPLY') {
-    currentResult *= enteredNumber;
-    mathOperator = '*';
+  if (
+    calculationType !== "ADD" &&
+    calculationType !== "SUBTRACT" &&
+    calculationType !== "MULTIPLY" &&
+    calculationType !== "DIVIDE"
+  ) {
+    return;
+  } else {
+    const enteredNumber = getUserNumberInput();
+    const initialResult = currentResult;
+    let mathOperator;
+    if (calculationType === "ADD") {
+      currentResult += enteredNumber;
+      mathOperator = "+";
+    } else if (calculationType === "SUBTRACT") {
+      currentResult -= enteredNumber;
+      mathOperator = "-";
+    } else if (calculationType === "DIVIDE") {
+      currentResult /= enteredNumber;
+      mathOperator = "/";
+    } else if (calculationType === "MULTIPLY") {
+      currentResult *= enteredNumber;
+      mathOperator = "*";
+    }
+
+    creatAndWriteOutput(mathOperator, initialResult, enteredNumber);
+    writeToLog(calculationType, initialResult, enteredNumber, currentResult);
   }
-  
-  creatAndWriteOutput(mathOperator, initialResult, enteredNumber);
-  writeToLog(calculationType, initialResult, enteredNumber, currentResult);
-}
+};
 
 const add = () => {
-  calculateResult('ADD');
+  calculateResult("ADD");
 };
 
 const subtract = () => {
-  calculateResult('SUBTRACT');
+  calculateResult("SUBTRACT");
 };
 
 const divide = () => {
-  calculateResult('DIVIDE');
+  calculateResult("DIVIDE");
 };
 
 const multiply = () => {
-  calculateResult('MULTIPLY');
+  calculateResult("MULTIPLY");
 };
 
 addBtn.addEventListener("click", add);
