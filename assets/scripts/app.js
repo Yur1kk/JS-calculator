@@ -55,23 +55,7 @@ const calculateResult = (calculationType) => {
   }
 };
 
-const add = () => {
-  calculateResult("ADD");
-};
-
-const subtract = () => {
-  calculateResult("SUBTRACT");
-};
-
-const divide = () => {
-  calculateResult("DIVIDE");
-};
-
-const multiply = () => {
-  calculateResult("MULTIPLY");
-};
-
-addBtn.addEventListener("click", add);
-subtractBtn.addEventListener("click", subtract);
-divideBtn.addEventListener("click", divide);
-multiplyBtn.addEventListener("click", multiply);
+addBtn.addEventListener("click", calculateResult.bind(this, 'ADD'));
+subtractBtn.addEventListener("click", calculateResult.bind(this, 'SUBTRACT'));
+divideBtn.addEventListener("click", calculateResult.bind(this, 'DIVIDE'));
+multiplyBtn.addEventListener("click", calculateResult.bind(this, 'MULTIPLY'));
