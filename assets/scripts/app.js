@@ -3,7 +3,7 @@ let currentResult = defaultResult;
 let logEntries = [];
 
 const getUserNumberInput = () => {
-  return parseInt(userInput.value);
+  return parseFloat(userInput.value);
 };
 
 const creatAndWriteOutput = (operator, resultBeforeCalc, calcNumber) => {
